@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Spin } from "antd";
+import { fetchWeather } from "../state/actions/weatherAction";
 
 function Main(props) {
+  // I use the useEffect hook to carry out component side effect
+  useEffect(() => {
+    props.fetchWeather();
+  }, []);
   return (
     <div>
       <button>See today's weather info</button>
@@ -33,4 +38,4 @@ const mapStateToProps = (state) => {
   };
 };
 // I wrap the export of the main component inside the connect call
-export default connect(mapStateToProps, {})(Main);
+export default connect(mapStateToProps, { fetchWeather })(Main);
