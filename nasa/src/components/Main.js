@@ -1,10 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Spin } from "antd";
 
 function Main(props) {
   return (
     <div>
-      <h2>Hello weather</h2>
+      <button>See today's weather info</button>
+      {props.isFetching ? (
+        <div>
+          <Spin size="large" spinning={props.isFetching} />
+        </div>
+      ) : props.weather.length === 0 ? (
+        <div>
+          <h2>There is no weather information to display</h2>
+        </div>
+      ) : (
+        <div>
+          <h1>Yeeeeee!</h1>
+        </div>
+      )}
     </div>
   );
 }

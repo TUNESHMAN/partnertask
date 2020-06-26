@@ -7,6 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./state/store";
 // Bring in the provider from react-redux
 import { Provider } from "react-redux";
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
   <Provider store={store}>
