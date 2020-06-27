@@ -26,6 +26,8 @@ function Main(props) {
           {props.photo.map((image) => (
             <div>
               <h2>{image.title}</h2>
+              <img src={image.hdurl} alt="photo of the day" />
+              <p>{image.explanation}</p>
             </div>
           ))}
         </div>
