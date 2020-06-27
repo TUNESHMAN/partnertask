@@ -4,6 +4,9 @@ import { Spin, Button } from "antd";
 import { fetchPhoto } from "../state/actions/photoAction";
 
 function Main(props) {
+  console.log(props.isFetching);
+  console.log(props.photo);
+
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
     props.fetchPhoto();
@@ -11,7 +14,7 @@ function Main(props) {
   return (
     <div>
       <Button>See today's weather info</Button>
-      {/* {props.isFetching ? (
+      {props.isFetching ? (
         <div>
           <Spin size="large" spinning={props.isFetching} />
         </div>
@@ -23,7 +26,7 @@ function Main(props) {
         <div>
           <h1>Yeeeeee!</h1>
         </div>
-      )}  */}
+      )} 
     </div>
   );
 }
@@ -32,9 +35,9 @@ function Main(props) {
 const mapStateToProps = (state) => {
   return {
     // I return an object with each property from the initial state declared in the reducer
-    isFetching: state.isFetching,
-    error: state.error,
-    photo: state.weather,
+    isFetching: state.photo.isFetching,
+    error: state.photo.error,
+    photo: state.photo.picture,
   };
 };
 // I wrap the export of the main component inside the connect call
