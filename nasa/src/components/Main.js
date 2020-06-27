@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Spin, Button } from "antd";
+import { Spin } from "antd";
 import { fetchPhoto } from "../state/actions/photoAction";
 
 function Main(props) {
   console.log(props.isFetching);
   console.log(props.photo);
+  
+  
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
@@ -13,7 +15,6 @@ function Main(props) {
   }, []);
   return (
     <div>
-      <Button>See today's weather info</Button>
       {props.isFetching ? (
         <div>
           <Spin size="large" spinning={props.isFetching} />
@@ -24,9 +25,11 @@ function Main(props) {
         </div>
       ) : (
         <div>
-          <h1>Yeeeeee!</h1>
+          {/* {props.photo.picture.map((potd) => (
+            <h2>{potd.date}</h2>
+          ))} */}
         </div>
-      )} 
+      )}
     </div>
   );
 }

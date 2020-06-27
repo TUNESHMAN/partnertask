@@ -24,7 +24,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        photo: action.payload,
+        picture: action.payload,
       };
     case GET_PHOTO_FAIL:
       return {
