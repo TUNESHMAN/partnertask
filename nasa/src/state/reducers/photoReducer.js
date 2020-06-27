@@ -24,7 +24,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        picture: action.payload,
+        picture: [...state.picture, action.payload],
       };
     case GET_PHOTO_FAIL:
       return {
@@ -38,3 +38,12 @@ const photoReducer = (state = initialState, action) => {
 };
 
 export default photoReducer;
+
+
+// const state = {
+//   pictures: {
+//     '2020-06-26': {},
+//     '2020-06-27': {}
+//   },
+//   currentPicture: {}
+// }

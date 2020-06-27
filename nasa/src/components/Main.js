@@ -6,8 +6,6 @@ import { fetchPhoto } from "../state/actions/photoAction";
 function Main(props) {
   console.log(props.isFetching);
   console.log(props.photo);
-  
-  
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
@@ -21,13 +19,15 @@ function Main(props) {
         </div>
       ) : props.photo.length === 0 ? (
         <div>
-          <h2>There is no weather information to display</h2>
+          <h2>There is no photo of the day</h2>
         </div>
       ) : (
         <div>
-          {/* {props.photo.picture.map((potd) => (
-            <h2>{potd.date}</h2>
-          ))} */}
+          {props.photo.map((image) => (
+            <div>
+              <h2>{image.title}</h2>
+            </div>
+          ))}
         </div>
       )}
     </div>
