@@ -1,12 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Spin, Button } from "antd";
+import { Spin, Button, DatePicker } from "antd";
 import { fetchPhoto } from "../state/actions/photoAction";
+import * as moment from "moment";
 import "../App.css";
 
 function Main(props) {
-  // This function controls the previous button
+  const dateFormat = "YYYY/MM/DD";
+  const [chosen_Date, setChosen_Date] = useState([moment(), moment()]);
 
+  const handleDate = (value) => {
+    setChosen_Date(value._d.toLocaleDateString("fr-CA"));
+    // console.log(value._d.toLocaleDateString("fr-CA"));
+  };
+
+  // This function controls the previous button
   const previous = (date) => {
     var d = new Date();
     const yesterday = new Date(d.setDate(d.getDate() - 1)).toLocaleDateString(
@@ -50,21 +58,28 @@ function Main(props) {
                   <span>Title:</span> {view.title}
                 </h2>
               </header>
-              <section>
-                <div className="image-div">
-                  <img
-                    src={view.hdurl}
-                    alt="photo of the day"
-                    style={{ width: "100%" }}
-                  />
-                  <div className="description-holder">
-                    <p>{view.explanation}</p>
-                  </div>
+
+              <div className="image-div">
+                <img
+                  src={view.hdurl}
+                  alt="photo of the day"
+                  style={{ width: "100%" }}
+                />
+                <div className="description-holder">
+                  <p>{view.explanation}</p>
                 </div>
-                <Button onClick={previous}>Previous</Button>
-                <Button onClick={next}>Next</Button>
-                <Button>Set as Favorite</Button>
-              </section>
+              </div>
+
+              <Button onClick={previous}>Previous</Button>
+              <Button onClick={next}>Next</Button>
+              <DatePicker
+                name="chosen_Date"
+                setFieldsValue={moment(chosen_Date, dateFormat)}
+                format={dateFormat}
+                onChange={handleDate}
+                placeholder="Choose a date"
+              />
+              <Button>Set as Favorite</Button>
             </div>
           ))}
         </div>
