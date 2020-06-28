@@ -22,9 +22,8 @@ function Main(props) {
     const yesterday = new Date(d.setDate(d.getDate() - 1)).toLocaleDateString(
       "fr-CA"
     );
-
     console.log(yesterday, "I am yesterday");
-
+    setChosen_Date(yesterday)
     props.fetchPhoto(yesterday);
   };
 
@@ -35,7 +34,7 @@ function Main(props) {
       "fr-CA"
     );
     console.log(tomorrow, "I am next");
-
+    setChosen_Date(tomorrow)
     props.fetchPhoto(tomorrow);
   };
 
