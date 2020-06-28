@@ -47,7 +47,7 @@ function Main(props) {
         </div>
       ) : props.photo.length === 0 ? (
         <div>
-          <h2>No photo to display</h2>
+          <h2 className="error-text">No photo to display</h2>
         </div>
       ) : (
         <div>

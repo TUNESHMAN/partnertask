@@ -53,18 +53,24 @@ img {
   font-weight: bold;
 }
 .spinner {
-  margin-left: 280px;
-  margin-top: 120px;
+  text-align: center;
+  margin-top: 75px;
 }
-.btn{
+.btn {
   margin: auto;
   display: table;
   margin-top: 10px;
 }
-.btn-btn{
+.btn-btn {
   margin-right: 8px;
   /* he: 15px; */
 }
-.btn-btn1{
+.btn-btn1 {
   margin-left: 8px;
+}
+
+.error-text {
+  display: flex;
+  margin-top: 60px;
+  margin-left: 50px;
 }
