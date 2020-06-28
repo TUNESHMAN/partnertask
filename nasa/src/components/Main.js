@@ -5,6 +5,7 @@ import { fetchPhoto } from "../state/actions/photoAction";
 import * as moment from "moment";
 import "../App.css";
 import { NavLink } from "react-router-dom";
+import SuccessModal from "./SuccessModal";
 
 function Main(props) {
   const dateFormat = "YYYY/MM/DD";
@@ -46,15 +47,17 @@ function Main(props) {
   const [favorites, setFavorites] = useState([]);
 
   const handleFavorites = (e, fav) => {
-    // e.preventDefault();
     setFavorites((prev) => [...prev, fav]);
     localStorage.setItem("favoriteList", JSON.stringify(favorites));
     console.log("favorites", favorites);
+    for (let i = 0; i < favorites.length; i++) {
+      const index = favorites[i];
+      const greaterIndex = favorites[i++];
+      if (greaterIndex) {
+        SuccessModal();
+      }
+    }
   };
-
-  // const getFavorites = () => {
-  //   localStorage.getItem("favoriteList");
-  // };
 
   return (
     <div className="body">
