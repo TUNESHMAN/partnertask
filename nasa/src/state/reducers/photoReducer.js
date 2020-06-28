@@ -9,7 +9,8 @@ import {
 const initialState = {
   isFetching: false,
   error: "",
-  picture: [],
+  picture: {},
+  // favorite:[]
 };
 
 // The reducer takes in initial state and the action as arguments
@@ -24,7 +25,7 @@ const photoReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        picture: [...state.picture, action.payload],
+        picture: action.payload,
       };
     case GET_PHOTO_FAIL:
       return {

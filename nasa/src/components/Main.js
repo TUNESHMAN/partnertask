@@ -7,37 +7,45 @@ import "../App.css";
 
 function Main(props) {
   const dateFormat = "YYYY/MM/DD";
-  const [chosen_Date, setChosen_Date] = useState([moment(), moment()]);
+  var d = new Date();
+  const today = new Date(d.setDate(d.getDate())).toLocaleDateString("fr-CA");
+  const [chosen_Date, setChosen_Date] = useState(today);
 
   const handleDate = (value) => {
     setChosen_Date(value._d.toLocaleDateString("fr-CA"));
-    props.fetchPhoto();
-    // console.log(value._d.toLocaleDateString("fr-CA"));
+    props.fetchPhoto(chosen_Date);
   };
 
   // This function controls the previous button
   const previous = (date) => {
-    var d = new Date();
+    var d = new Date(chosen_Date);
     const yesterday = new Date(d.setDate(d.getDate() - 1)).toLocaleDateString(
       "fr-CA"
     );
+
+    console.log(yesterday, "I am yesterday");
+
     props.fetchPhoto(yesterday);
   };
 
   // This function controls the next button
   const next = (date) => {
-    var d = new Date();
+    var d = new Date(chosen_Date);
     const tomorrow = new Date(d.setDate(d.getDate() + 1)).toLocaleDateString(
       "fr-CA"
     );
+    console.log(tomorrow, "I am next");
+
     props.fetchPhoto(tomorrow);
   };
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
-    props.fetchPhoto(today);
-  }, []);
+    console.log(chosen_Date, "I am clicked");
+
+    // const today = new Date().toISOString().slice(0, 10);
+    props.fetchPhoto(chosen_Date);
+  }, [chosen_Date]);
 
   return (
     <div className="body">
@@ -45,46 +53,48 @@ function Main(props) {
         <div className="spinner">
           <Spin size="large" spinning={props.isFetching} />
         </div>
-      ) : props.photo.length === 0 ? (
-        <div>
+      ) : Object.keys(props.photo).length === 0 ? (
+        <div className="error-div">
           <h2 className="error-text">No photo to display</h2>
         </div>
       ) : (
         <div>
-          {props.photo.map((view) => (
-            <div className="container">
-              <h1>Photo of the day for {view.date}</h1>
-              <header>
-                <h2>
-                  <span>Title:</span> {view.title}
-                </h2>
-              </header>
+          <div className="container">
+            <h1>Photo of the day for {props.photo.date}</h1>
+            <header>
+              <h2>
+                <span>Title:</span> {props.photo.title}
+              </h2>
+            </header>
 
-              <div className="image-div">
-                <img
-                  src={view.hdurl}
-                  alt="photo of the day"
-                  style={{ width: "100%" }}
-                />
-                <div className="description-holder">
-                  <p>{view.explanation}</p>
-                </div>
-              </div>
-              <div className="btn">
-                <Button className="btn-btn" onClick={previous}>Previous</Button>
-                <Button className="btn-btn" onClick={next}>Next</Button>
-                <DatePicker
-                  name="chosen_Date"
-                  setFieldsValue={moment(chosen_Date, dateFormat)}
-                  format={dateFormat}
-                  onChange={handleDate}
-                  placeholder="Choose a date"
-                  className="btn-btn"
-                />
-                <Button className="btn-btn1">Set as Favorite</Button>
+            <div className="image-div">
+              <img
+                src={props.photo.hdurl}
+                alt="photo of the day"
+                style={{ width: "100%" }}
+              />
+              <div className="description-holder">
+                <p>{props.photo.explanation}</p>
               </div>
             </div>
-          ))}
+            <div className="btn">
+              <Button className="btn-btn" onClick={previous}>
+                Previous
+              </Button>
+              <Button className="btn-btn" onClick={next}>
+                Next
+              </Button>
+              <DatePicker
+                name="chosen_Date"
+                setFieldsValue={moment(chosen_Date, dateFormat)}
+                format={dateFormat}
+                onChange={handleDate}
+                placeholder="Choose a date"
+                className="btn-btn"
+              />
+              <Button className="btn-btn1">Set as Favorite</Button>
+            </div>
+          </div>
         </div>
       )}
     </div>

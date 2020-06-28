@@ -69,8 +69,18 @@ img {
   margin-left: 8px;
 }
 
-.error-text {
+.error-div {
   display: flex;
-  margin-top: 60px;
-  margin-left: 50px;
+  margin-top: 70px;
+  text-align: center;
+  justify-content: center;
+  
+}
+
+.error-text {
+  font-family: "Notable", sans-serif;
+  font-size: 35px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
 }
