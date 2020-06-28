@@ -5,18 +5,21 @@ import {
   GET_PHOTO_FAIL,
 } from "../types/types";
 import axios from "axios";
+import ErrorModal from "../../components/ErrorModal";
 
-export const fetchPhoto = () => (dispatch) => {
+export const fetchPhoto = (date) => (dispatch) => {
   dispatch({ type: GET_PHOTO_START });
   //  Make a call to the API
   axios
-    .get("https://api.nasa.gov/planetary/apod?api_key=U8fI0KD04W8rVLSSvIuey7l15F6OCvFc7f5Zlc5N")
+    .get(
+      `https://api.nasa.gov/planetary/apod?api_key=U8fI0KD04W8rVLSSvIuey7l15F6OCvFc7f5Zlc5N&date=${date}`
+    )
     .then((res) => {
-      console.log(res.data);
+      // localStorage.setItem("favorites",  )
       dispatch({ type: GET_PHOTO_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
       dispatch({ type: GET_PHOTO_FAIL, payload: err });
+      ErrorModal();
     });
 };

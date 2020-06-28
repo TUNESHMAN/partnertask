@@ -39,7 +39,6 @@ const photoReducer = (state = initialState, action) => {
 
 export default photoReducer;
 
-
 // const state = {
 //   pictures: {
 //     '2020-06-26': {},
