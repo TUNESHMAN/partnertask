@@ -4,6 +4,7 @@ import { Spin, Button, DatePicker } from "antd";
 import { fetchPhoto } from "../state/actions/photoAction";
 import * as moment from "moment";
 import "../App.css";
+import { NavLink } from "react-router-dom";
 
 function Main(props) {
   const dateFormat = "YYYY/MM/DD";
@@ -50,6 +51,10 @@ function Main(props) {
     localStorage.setItem("favoriteList", JSON.stringify(favorites));
     console.log("favorites", favorites);
   };
+
+  // const getFavorites = () => {
+  //   localStorage.getItem("favoriteList");
+  // };
 
   return (
     <div className="body">
@@ -98,10 +103,13 @@ function Main(props) {
               />
               <Button
                 className="btn-btn1"
-                onClick={(e) => handleFavorites(e,props.photo)}
+                onClick={(e) => handleFavorites(e, props.photo)}
               >
                 Set as Favorite
               </Button>
+              <NavLink to="/favorites">
+                <Button className="btn-btn1">View Favorite</Button>
+              </NavLink>
             </div>
           </div>
         </div>

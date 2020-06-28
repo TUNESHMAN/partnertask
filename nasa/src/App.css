@@ -83,3 +83,31 @@ img {
   font-weight: bold;
   text-align: center;
 }
+
+.favName {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 17px;
+}
+
+.fav-card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+.fav-header {
+  font-family: "Krona One", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.fav-container {
+  margin: 20px;
+  padding: 10px;
+}
