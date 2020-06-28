@@ -11,6 +11,7 @@ function Main(props) {
 
   const handleDate = (value) => {
     setChosen_Date(value._d.toLocaleDateString("fr-CA"));
+    props.fetchPhoto();
     // console.log(value._d.toLocaleDateString("fr-CA"));
   };
 
@@ -39,9 +40,9 @@ function Main(props) {
   }, []);
 
   return (
-    <div>
+    <div className="body">
       {props.isFetching ? (
-        <div>
+        <div className="spinner">
           <Spin size="large" spinning={props.isFetching} />
         </div>
       ) : props.photo.length === 0 ? (
@@ -69,17 +70,19 @@ function Main(props) {
                   <p>{view.explanation}</p>
                 </div>
               </div>
-
-              <Button onClick={previous}>Previous</Button>
-              <Button onClick={next}>Next</Button>
-              <DatePicker
-                name="chosen_Date"
-                setFieldsValue={moment(chosen_Date, dateFormat)}
-                format={dateFormat}
-                onChange={handleDate}
-                placeholder="Choose a date"
-              />
-              <Button>Set as Favorite</Button>
+              <div className="btn">
+                <Button className="btn-btn" onClick={previous}>Previous</Button>
+                <Button className="btn-btn" onClick={next}>Next</Button>
+                <DatePicker
+                  name="chosen_Date"
+                  setFieldsValue={moment(chosen_Date, dateFormat)}
+                  format={dateFormat}
+                  onChange={handleDate}
+                  placeholder="Choose a date"
+                  className="btn-btn"
+                />
+                <Button className="btn-btn1">Set as Favorite</Button>
+              </div>
             </div>
           ))}
         </div>

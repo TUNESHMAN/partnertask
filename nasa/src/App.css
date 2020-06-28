@@ -1,3 +1,8 @@
+.body {
+  width: 100%;
+  min-height: 220px;
+  /* background-color: seagreen; */
+}
 .container {
   padding: 0;
   margin: 25px;
@@ -46,4 +51,20 @@ img {
   font-family: "Yellowtail", cursive;
   font-size: 14px;
   font-weight: bold;
+}
+.spinner {
+  margin-left: 280px;
+  margin-top: 120px;
+}
+.btn{
+  margin: auto;
+  display: table;
+  margin-top: 10px;
+}
+.btn-btn{
+  margin-right: 8px;
+  /* he: 15px; */
+}
+.btn-btn1{
+  margin-left: 8px;
 }
