@@ -7,11 +7,14 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./state/store";
 // Bring in the provider from react-redux
 import { Provider } from "react-redux";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
+import { BrowserRouter as Route } from "react-router-dom";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Route>
+      <App />
+    </Route>
   </Provider>,
   document.getElementById("root")
 );

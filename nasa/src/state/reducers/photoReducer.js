@@ -10,7 +10,7 @@ const initialState = {
   isFetching: false,
   error: "",
   picture: {},
-  // favorite:[]
+  favorite:[]
 };
 
 // The reducer takes in initial state and the action as arguments
@@ -40,10 +40,3 @@ const photoReducer = (state = initialState, action) => {
 
 export default photoReducer;
 
-// const state = {
-//   pictures: {
-//     '2020-06-26': {},
-//     '2020-06-27': {}
-//   },
-//   currentPicture: {}
-// }

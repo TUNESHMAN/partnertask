@@ -22,8 +22,7 @@ function Main(props) {
     const yesterday = new Date(d.setDate(d.getDate() - 1)).toLocaleDateString(
       "fr-CA"
     );
-    console.log(yesterday, "I am yesterday");
-    setChosen_Date(yesterday)
+    setChosen_Date(yesterday);
     props.fetchPhoto(yesterday);
   };
 
@@ -33,18 +32,24 @@ function Main(props) {
     const tomorrow = new Date(d.setDate(d.getDate() + 1)).toLocaleDateString(
       "fr-CA"
     );
-    console.log(tomorrow, "I am next");
-    setChosen_Date(tomorrow)
+    setChosen_Date(tomorrow);
     props.fetchPhoto(tomorrow);
   };
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
-    console.log(chosen_Date, "I am clicked");
-
-    // const today = new Date().toISOString().slice(0, 10);
     props.fetchPhoto(chosen_Date);
   }, [chosen_Date]);
+
+  // Favorites
+  const [favorites, setFavorites] = useState([]);
+
+  const handleFavorites = (e, fav) => {
+    // e.preventDefault();
+    setFavorites((prev) => [...prev, fav]);
+    localStorage.setItem("favoriteList", JSON.stringify(favorites));
+    console.log("favorites", favorites);
+  };
 
   return (
     <div className="body">
@@ -91,7 +96,12 @@ function Main(props) {
                 placeholder="Choose a date"
                 className="btn-btn"
               />
-              <Button className="btn-btn1">Set as Favorite</Button>
+              <Button
+                className="btn-btn1"
+                onClick={(e) => handleFavorites(e,props.photo)}
+              >
+                Set as Favorite
+              </Button>
             </div>
           </div>
         </div>
