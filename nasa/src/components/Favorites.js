@@ -3,8 +3,6 @@ import { Card } from "antd";
 
 function Favorites() {
   const favs = JSON.parse(localStorage.getItem("favoriteList"));
-  // console.log(favs);
-
   return (
     <div className="fav-container">
       <h1 className="fav-header">These are your favorites</h1>
