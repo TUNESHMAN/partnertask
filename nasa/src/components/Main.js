@@ -101,7 +101,7 @@ function Main(props) {
                 setFieldsValue={moment(chosen_Date, dateFormat)}
                 format={dateFormat}
                 onChange={handleDate}
-                placeholder="Choose a date"
+                placeholder="Date"
                 className="btn-btn"
               />
               <Button
