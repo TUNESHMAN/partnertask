@@ -6,7 +6,6 @@ function Favorites() {
 
   return (
     <div className="fav-container">
-      <h1 className="fav-header">Favorites</h1>
       {favs.length < 1 ? (
         <h1 className="empty-fav">You do not have favorites</h1>
       ) : (
@@ -23,6 +22,7 @@ function Favorites() {
                 cover={<img alt="globe" src={fav.hdurl} />}
               >
                 <p>
+                  <span className="title">Title: </span>
                   <span className="favName">{fav.title}</span>
                 </p>
               </Card>

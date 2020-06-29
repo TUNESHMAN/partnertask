@@ -2,7 +2,7 @@
   width: 100%;
   overflow-y: hidden;
   overflow-x: hidden;
- max-height: 650px;
+  max-height: 650px;
 }
 .container {
   padding: 0;
@@ -27,7 +27,6 @@ header h2 {
 }
 
 img {
-  /* max-width: %; */
   max-height: 300px;
 }
 
@@ -64,7 +63,6 @@ img {
 }
 .btn-btn {
   margin-right: 8px;
-  /* he: 15px; */
 }
 .btn-btn1 {
   margin-left: 8px;
@@ -118,4 +116,17 @@ img {
   font-family: "Krona One", sans-serif;
   font-size: 18px;
   color: red;
+}
+.title {
+  font-family: "Krona One", sans-serif;
+}
+
+.add-btn1 {
+  margin-top: 10px;
+}
+
+.favorite-header {
+  font-family: Roboto;
+  font-weight: bolder;
+  font-size: 18px;
 }
