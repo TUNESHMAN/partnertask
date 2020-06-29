@@ -111,3 +111,10 @@ img {
   margin: 20px;
   padding: 10px;
 }
+
+.empty-fav {
+  text-align: center;
+  font-family: "Krona One", sans-serif;
+  font-size: 18px;
+  color: red;
+}

@@ -3,13 +3,12 @@ import { Card } from "antd";
 
 function Favorites() {
   const favs = JSON.parse(localStorage.getItem("favoriteList"));
-  console.log(favs);
 
   return (
     <div className="fav-container">
       <h1 className="fav-header">Favorites</h1>
       {favs.length < 1 ? (
-        <h1>You do not have favorites</h1>
+        <h1 className="empty-fav">You do not have favorites</h1>
       ) : (
         <div className="fav-card">
           {favs.map((fav) => (
