@@ -19,7 +19,7 @@ function Favorites() {
                   borderRadius: "12px",
                   marginBottom: "18px",
                 }}
-                cover={<img alt="globe" src={fav.hdurl} />}
+                cover={<img alt="potd" src={fav.hdurl} />}
               >
                 <p>
                   <span className="title">Title: </span>
