@@ -51,9 +51,10 @@ function Main(props) {
     localStorage.setItem("favoriteList", JSON.stringify(favorites));
     console.log("favorites", favorites);
     for (let i = 0; i < favorites.length; i++) {
-      const index = favorites[i];
       const greaterIndex = favorites[i++];
+      let count = 0;
       if (greaterIndex) {
+        count++;
         SuccessModal();
       }
     }
