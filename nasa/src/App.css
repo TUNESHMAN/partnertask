@@ -1,14 +1,13 @@
 .body {
   width: 100%;
-  min-height: 220px;
-  /* background-color: seagreen; */
+  overflow-y: hidden;
+  overflow-x: hidden;
+ max-height: 650px;
 }
 .container {
   padding: 0;
   margin: 25px;
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 .container h1 {
@@ -28,17 +27,19 @@ header h2 {
 }
 
 img {
-  /* height: auto; */
-  /* min-height: 80%; */
+  /* max-width: %; */
+  max-height: 300px;
 }
 
 .image-div {
-  width: 80%;
+  max-width: 80%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
   margin-left: auto;
   margin-right: auto;
+  background-color: seagreen;
+  min-height: 350px;
 }
 
 .description-holder {
