@@ -21,7 +21,6 @@ export const fetchPhoto = (date) => (dispatch) => {
       let serialized_object = JSON.stringify(potd);
       localStorage.setItem("potd", serialized_object);
       let deserialized_object = JSON.parse(localStorage.getItem("potd"));
-      console.log(deserialized_object);
     })
     .catch((err) => {
       dispatch({ type: GET_PHOTO_FAIL, payload: err });
