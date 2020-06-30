@@ -16,7 +16,6 @@ export const fetchPhoto = (date) => (dispatch) => {
     )
     .then((res) => {
       const potd = res.data;
-
       dispatch({ type: GET_PHOTO_SUCCESS, payload: potd });
       let serialized_object = JSON.stringify(potd);
       localStorage.setItem("potd", serialized_object);

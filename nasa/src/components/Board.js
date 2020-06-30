@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Layout, Avatar, Menu, Icon, Breadcrumb, Button, Modal } from "antd";
+import React from "react";
+import { Layout, Avatar, Menu, Icon, Breadcrumb } from "antd";
 import Title from "antd/lib/typography/Title";
-import SubMenu from "antd/lib/menu/SubMenu";
-import Favorites from "../components/Favorites"
-import { NavLink } from "react-router-dom";
 
+import Favorites from "../components/Favorites";
+import { NavLink } from "react-router-dom";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -14,8 +13,10 @@ function Board(props) {
       <Layout>
         <Header style={{ padding: "10px", backgroundColor: "white" }}>
           <Avatar icon="user" style={{ float: "left" }} />
-          <Title style={{ color: "white", marginLeft: "900px" }} level={3}>
-          </Title>
+          <Title
+            style={{ color: "white", marginLeft: "900px" }}
+            level={3}
+          ></Title>
         </Header>
         <Layout>
           <Sider style={{ background: "teal" }}>
