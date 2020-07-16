@@ -3,22 +3,22 @@ import { Card } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 function Favorites() {
-  let favs = JSON.parse(localStorage.getItem("favoriteList"));
-  const [favdis, setfavdis] = useState(favs);
+  let favorite = JSON.parse(localStorage.getItem("favoriteList"));
+  const [favPhoto, setFavPhoto] = useState(favorite);
   const handleDelete = (date) => {
-    const filtered_favs = favs.filter((day) => day.date !== date);
-    localStorage.setItem("favoriteList", JSON.stringify(filtered_favs));
-    const newFavs = JSON.parse(localStorage.getItem("favoriteList"));
-    setfavdis(newFavs);
+    const filteredPhoto = favorite.filter((day) => day.date !== date);
+    localStorage.setItem("favoriteList", JSON.stringify(filteredPhoto));
+    const deletedPhotos = JSON.parse(localStorage.getItem("favoriteList"));
+    setFavPhoto(deletedPhotos);
   };
 
   return (
     <div className="fav-container">
-      {favdis.length < 1 ? (
+      {favPhoto.length < 1 ? (
         <h1 className="empty-fav">You do not have favorites</h1>
       ) : (
         <div className="fav-card">
-          {favdis.map((fav) => (
+          {favPhoto.map((fav) => (
             <div>
               <Card
                 hoverable

@@ -48,6 +48,7 @@ export function Main(props) {
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
+    // Immediately it mounts , we want to have the photo for that day and local storage with key favoriteList and value favorites
     props.fetchPhoto(chosen_Date);
     localStorage.setItem("favoriteList", JSON.stringify(favorites)); //In localstorage, we can only store data as a string
   }, [chosen_Date, favorites]);
@@ -113,7 +114,9 @@ export function Main(props) {
                 Set as Favorite
               </Button>
               <NavLink to="/favorites">
-                <Button className="btn-btn1" data-testid="viewFav">View Favorite</Button>
+                <Button className="btn-btn1" data-testid="viewFav">
+                  View Favorite
+                </Button>
               </NavLink>
             </div>
           </div>
