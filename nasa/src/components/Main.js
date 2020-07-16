@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Spin, Button, DatePicker } from "antd";
 import { fetchPhoto } from "../state/actions/photoAction";
-import * as moment from "moment";
+import moment from "moment";
 import "../App.css";
 import { NavLink } from "react-router-dom";
 import SuccessModal from "./SuccessModal";
 
-function Main(props) {
+export function Main(props) {
   const dateFormat = "YYYY/MM/DD";
+  // setDate()--> sets the day as a number (1-31)
+  // getDate()--> gets the day as a number (1-31)
+  // toLocaleDateString("fr-CA") --> gives the date in the format YYYY-MM-DD
   var d = new Date();
   const today = new Date(d.setDate(d.getDate())).toLocaleDateString("fr-CA");
   const [chosen_Date, setChosen_Date] = useState(today);
@@ -18,6 +21,7 @@ function Main(props) {
   );
 
   const handleDate = (value) => {
+    console.log(value);
     setChosen_Date(value._d.toLocaleDateString("fr-CA"));
     props.fetchPhoto(chosen_Date);
   };
@@ -45,7 +49,7 @@ function Main(props) {
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
     props.fetchPhoto(chosen_Date);
-    localStorage.setItem("favoriteList", JSON.stringify(favorites));
+    localStorage.setItem("favoriteList", JSON.stringify(favorites)); //In localstorage, we can only store data as a string
   }, [chosen_Date, favorites]);
 
   const handleFavorites = (fav) => {
@@ -54,7 +58,7 @@ function Main(props) {
   };
 
   return (
-    <div className="body" data-testid='container'>
+    <div className="body" data-testid="container">
       {props.isFetching ? (
         <div className="spinner">
           <Spin size="large" spinning={props.isFetching} />
@@ -84,10 +88,14 @@ function Main(props) {
               </div>
             </div>
             <div className="btn">
-              <Button data-testid='previous' className="btn-btn" onClick={previous}>
+              <Button
+                data-testid="previous"
+                className="btn-btn"
+                onClick={previous}
+              >
                 Previous
               </Button>
-              <Button className="btn-btn" onClick={next} data-testid='next'>
+              <Button className="btn-btn" onClick={next} data-testid="next">
                 Next
               </Button>
               <DatePicker
@@ -105,7 +113,7 @@ function Main(props) {
                 Set as Favorite
               </Button>
               <NavLink to="/favorites">
-                <Button className="btn-btn1">View Favorite</Button>
+                <Button className="btn-btn1" data-testid="viewFav">View Favorite</Button>
               </NavLink>
             </div>
           </div>
