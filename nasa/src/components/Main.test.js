@@ -1,9 +1,9 @@
 import React from "React";
-import App from "./App";
+import Main from "./Main";
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { Provider } from "react-redux";
-import store from "./state/store";
+import store from "../state/store";
 
 // Take care of cleaning up after every operation
 afterEach(rtl.cleanup);
@@ -14,10 +14,11 @@ beforeEach(() => {
   // The aim is to recreate the "wrapper" at every test
   wrapper = rtl.render(
     <Provider store={store}>
-      <App />
+      <Main />
     </Provider>
   );
 });
+// Make a trivial test
 it("renders without crashing", () => {
   wrapper.debug(); //This is like console.log. It gives a look into the fake Dom that is created
 });

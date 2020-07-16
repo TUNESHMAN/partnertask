@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.12",
     "axios": "^0.19.2",
@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
