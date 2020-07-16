@@ -4,6 +4,7 @@ exports[`renders without crashing 1`] = `
 <div>
   <div
     class="body"
+    data-testid="container"
   >
     <div
       class="spinner"

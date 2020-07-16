@@ -54,7 +54,7 @@ function Main(props) {
   };
 
   return (
-    <div className="body">
+    <div className="body" data-testid='container'>
       {props.isFetching ? (
         <div className="spinner">
           <Spin size="large" spinning={props.isFetching} />
@@ -84,10 +84,10 @@ function Main(props) {
               </div>
             </div>
             <div className="btn">
-              <Button className="btn-btn" onClick={previous}>
+              <Button data-testid='previous' className="btn-btn" onClick={previous}>
                 Previous
               </Button>
-              <Button className="btn-btn" onClick={next}>
+              <Button className="btn-btn" onClick={next} data-testid='next'>
                 Next
               </Button>
               <DatePicker

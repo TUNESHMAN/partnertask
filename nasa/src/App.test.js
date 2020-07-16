@@ -19,6 +19,6 @@ beforeEach(() => {
   );
 });
 it("renders without crashing", () => {
-  wrapper.debug(); //This is like console.log. It gives a look into the fake Dom that is created
+//   wrapper.debug(); //This is like console.log. It gives a look into the fake Dom that is created
   expect(wrapper.container).toMatchSnapshot();
 });
