@@ -5,7 +5,7 @@ import {
   GET_PHOTO_FAIL,
 } from "../types/types";
 import axios from "axios";
-import ErrorModal from "../../components/ErrorModal";
+import StatusModal from "../../components/StatusModal";
 
 export const fetchPhoto = (date) => (dispatch) => {
   dispatch({ type: GET_PHOTO_START });
@@ -19,10 +19,13 @@ export const fetchPhoto = (date) => (dispatch) => {
       dispatch({ type: GET_PHOTO_SUCCESS, payload: potd });
       let serialized_object = JSON.stringify(potd);
       localStorage.setItem("potd", serialized_object);
-      let deserialized_object = JSON.parse(localStorage.getItem("potd"));
+      // let deserialized_object = JSON.parse(localStorage.getItem("potd"));
     })
     .catch((err) => {
       dispatch({ type: GET_PHOTO_FAIL, payload: err });
-      ErrorModal();
+      StatusModal(
+        "Add favorites success",
+        "Cannot retrieve photo for that day"
+      );
     });
 };

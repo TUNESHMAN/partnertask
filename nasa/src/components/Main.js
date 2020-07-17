@@ -5,24 +5,24 @@ import { fetchPhoto } from "../state/actions/photoAction";
 import moment from "moment";
 import "../App.css";
 import { NavLink } from "react-router-dom";
-import SuccessModal from "./SuccessModal";
+import StatusModal from "./StatusModal";
 
 export function Main(props) {
   const dateFormat = "YYYY/MM/DD";
   // setDate()--> sets the day as a number (1-31)
   // getDate()--> gets the day as a number (1-31)
   // toLocaleDateString("fr-CA") --> gives the date in the format YYYY-MM-DD
-  var d = new Date();
-  const today = new Date(d.setDate(d.getDate())).toLocaleDateString("fr-CA");
+  const today = new Date().toLocaleDateString("fr-CA");
   const [chosen_Date, setChosen_Date] = useState(today);
   // Favorites
   const [favorites, setFavorites] = useState(
+    // In the event that the value of favoriteList does evaluate quickly, the empty array is  a fallback value.
     JSON.parse(localStorage.getItem("favoriteList")) || []
   );
 
   const handleDate = (value) => {
-    console.log(value);
     setChosen_Date(value._d.toLocaleDateString("fr-CA"));
+    // Passes today's date by default to the URL or the date from the date picker
     props.fetchPhoto(chosen_Date);
   };
 
@@ -33,6 +33,7 @@ export function Main(props) {
       "fr-CA"
     );
     setChosen_Date(yesterday);
+    // Passes yesterday's date to the URL as a parameter
     props.fetchPhoto(yesterday);
   };
 
@@ -43,19 +44,34 @@ export function Main(props) {
       "fr-CA"
     );
     setChosen_Date(tomorrow);
+    // Passes tomorrow's date to the URL as a parameter
     props.fetchPhoto(tomorrow);
   };
 
   // I use the useEffect hook to carry out component side effect
   useEffect(() => {
     // Immediately it mounts , we want to have the photo for that day and local storage with key favoriteList and value favorites
+    // UseEffect takes in an optional dependency array. In this case, useEffect calls itself  when chosen_Date and favorites changes
     props.fetchPhoto(chosen_Date);
-    localStorage.setItem("favoriteList", JSON.stringify(favorites)); //In localstorage, we can only store data as a string
+    localStorage.setItem("favoriteList", JSON.stringify(favorites)); //In localStorage, we can only store data as a string
   }, [chosen_Date, favorites]);
 
   const handleFavorites = (fav) => {
-    setFavorites([...favorites, fav]);
-    SuccessModal();
+    // Find checks for the presence of a particular item in an array, if it finds it, it returns it.
+    const userFavorites = favorites.find((favs) => favs.date === fav.date);
+    if (userFavorites) {
+      StatusModal(
+        "Add favorites error",
+        "image already exist in favorites list"
+      );
+    } else {
+      setFavorites([...favorites, fav]);
+      StatusModal(
+        "Add favorites success",
+        "image added to favorites list",
+        "success"
+      );
+    }
   };
 
   return (

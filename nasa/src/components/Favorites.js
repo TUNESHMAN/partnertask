@@ -8,8 +8,8 @@ function Favorites() {
   const handleDelete = (date) => {
     const filteredPhoto = favorite.filter((day) => day.date !== date);
     localStorage.setItem("favoriteList", JSON.stringify(filteredPhoto));
-    const deletedPhotos = JSON.parse(localStorage.getItem("favoriteList"));
-    setFavPhoto(deletedPhotos);
+    const newPhotoList = JSON.parse(localStorage.getItem("favoriteList"));
+    setFavPhoto(newPhotoList);
   };
 
   return (

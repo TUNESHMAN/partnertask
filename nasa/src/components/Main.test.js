@@ -2,9 +2,9 @@ import React from "React";
 import { Main } from "./Main";
 import "@testing-library/jest-dom/extend-expect";
 import * as rtl from "@testing-library/react";
-import { MemoryRouter as Router } from "react-router-dom"; // Cannot use NavLink outside a router
+import { MemoryRouter as Router } from "react-router-dom"; // The Memory Router keeps the history of our URL in memory. Cannot use NavLink outside a router
 
-// beforeEach and afterEach runs abritrary code before each and after each test
+// beforeEach and afterEach runs arbitrary code before each and after each test
 
 // Take care of cleaning up after every operation
 afterEach(rtl.cleanup);
