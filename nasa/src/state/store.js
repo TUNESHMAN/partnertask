@@ -1,4 +1,4 @@
-// Thunk is a middleware
+// Thunk is a middleware that call action creators that return a function instead of an action object
 import thunk from "redux-thunk";
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import photoReducer from "./reducers/photoReducer";
